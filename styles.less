@@ -1,0 +1,411 @@
+@import "imports/mixins.less";
+
+/* 
+Table of Contents 
+	FUNCTIONAL STYLES
+	CUSTOM CLASSES
+	LEGACY
+	JQUERY OVERRIDES
+*/
+
+
+
+.fa,
+.fa-stack {    
+    &.fa-ptr {
+        cursor: pointer;
+    }
+}
+
+/*
+====================================================================================================
+FUNCTIONAL STYLES
+====================================================================================================
+*/
+.table-cell 
+{
+	display: table-cell;
+}
+
+.display-none 
+{
+	display: none;
+}
+
+.inline-block,
+.display-inline-block
+{
+	display: inline-block;
+}
+
+.float-left
+{
+	float: left;
+}
+
+.float-right
+{
+	float: right;
+}
+
+.align-right,
+.text-align-right
+{
+	text-align: right;
+}
+
+.align-center,
+.text-align-center
+{
+	text-align: center;
+}
+
+.align-left,
+.text-align-left
+{
+	text-align: left;
+}
+
+.grey-text
+{
+	color: #333333;
+}
+
+.no-margins,
+.margins-none
+{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.no-padding,
+.padding-none 
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.no-padding-right,
+.padding-right-none
+{
+	padding-right: 0px;
+}
+
+.no-padding-left, 
+.padding-left-none
+{
+	padding-left: 0px !important;
+}
+
+.cursor-default
+{
+	cursor: default;
+}
+
+.max-width 
+{
+	width: 100%;
+}
+
+.dh-red-color {
+	color: @dh-red;
+}
+
+.dh-red-bg {
+	background-color: @dh-red;
+}
+
+.background-white {
+	background-color: white;
+}
+
+.center-contents {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+/*
+====================================================================================================
+CHECKBOX
+====================================================================================================
+<input id="box1" type="checkbox" class="fa-checkbox fa-checkbox-square"/>
+<label for="box1">Checkbox 1</label>
+<input id="box2" type="checkbox" class="fa-checkbox fa-checkbox-circle"/>
+<label for="box2">Checkbox 2</label>
+*/
+.fa-checkbox {
+	display:none;	/* to hide the checkbox itself */
+
+	&+label:before {
+		font-family: FontAwesome;
+  		display: inline-block;
+  		width: 1.2em;	/* space between checkbox and label */
+  		text-align: left;
+	}
+
+	&.fa-checkbox-square {
+		&+label:before {
+			content: "\f096";	/* unchecked icon */
+		}
+
+		&:checked+label:before {
+			content: "\f046";	/* checked icon */
+		}
+	}
+
+	&.fa-checkbox-circle {
+		&+label:before {
+			content: "\f10c";	/* unchecked icon */
+		}
+
+		&:checked+label:before {
+			content: "\f05d";	/* checked icon */
+		}
+	}
+}
+
+/*
+====================================================================================================
+CUSTOM CLASSES
+====================================================================================================
+*/
+
+
+// Automatic Handling of check/uncheck
+.fa-check-enabled
+{
+	cursor: pointer;
+	
+	.fa-check-square,
+	.fa-check-circle,
+	.fa-check-circle-o
+	{
+		display: none;
+	}
+
+	&.checked 
+	{
+		.fa-check-square,
+		.fa-check-circle,
+		.fa-check-circle-o
+		{
+			display: inline-block;
+			color: #8CD05C;
+		}
+
+		.fa-square,
+		.fa-circle,
+		.fa-circle-o
+		{
+			display: none;
+		}
+	}
+}
+
+
+
+a.bare-link, 
+{
+	text-decoration: none;
+	color: inherit;
+	&:link, 
+	&:hover, 
+	&:active, 
+	&:visited 
+	{
+		text-decoration: none;
+		color: inherit;
+	}
+}
+
+.vert-align-outer 
+{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	.vert-align-inner {
+		display: inline-block;
+	}
+}
+
+.dotted-hr 
+{
+	border-top: thin dotted #CFCFCF;
+	margin: 3px 0px;
+	height: 3px; // Required for IE to show in all cases
+	line-height: 1;
+}
+
+// On/Off slider
+.on-off-slider 
+{
+	display:  inline-block;
+	background-color: white;
+	border: 2px solid #CBCBCB;
+	border-radius: @badge-border-radius;	
+	line-height: @badge-line-height;
+	text-align: right;
+	white-space: nowrap;
+   	width: 50px;
+
+    .badge-on 
+	{
+		display: none;
+		background-color: #47AD51;
+		font-size: 10px;
+	}
+
+	.badge-off
+    {
+    	font-size: 10px;
+    }
+	
+	&.active 
+	{
+		text-align: left;
+
+		.badge-on
+		{
+			display: inline-block;
+		}
+
+		.badge-off
+		{
+			display: none;
+		}
+	}
+}
+
+.linklist-header
+{
+	h1 
+	{
+		color: #428BCA;
+		font-weight: bold;
+		font-size: 30px;		
+	}
+}
+
+.linklist-text
+{
+	font-size: 12px;
+}
+
+.linklist
+{
+	margin: 20px 0;
+	padding: 0;
+
+	li
+	{
+		border: 1px solid #EBEBEB;			
+		border-bottom: none;
+		list-style: none;
+		padding: 10px;
+		&:last-child
+		{
+			border-bottom: 1px solid #EBEBEB;
+		}
+	}
+}
+
+
+/*
+====================================================================================================
+LEGACY
+====================================================================================================
+*/
+body .floatleft 
+{
+	float: left;
+}
+
+body .floatRight 
+{
+  	float: right;
+}
+
+body .alignRight 
+{
+  	text-align: right;
+}
+
+body .alignCenter 
+{
+  	text-align: center;
+}
+
+body .alignLeft 
+{
+  	text-align: left;
+}
+
+#fulltable
+{
+	width: 100%;
+	border: 1px solid #000;
+	background: #fff;
+	border-collapse: separate;
+}
+
+#fulltable th, #fulltable td
+{
+	margin: 0;
+	padding: 8px 10px;
+	text-align: left;
+	border-bottom: 1px solid #bfbfbf;
+}
+
+#fulltable tr
+{
+	background: #e6e6e6;
+}
+
+#fulltable tr.alt
+{
+	background: #f1f1f1;
+}
+
+#fulltable th
+{
+	color: #666;
+}
+
+#fulltable td.smaller
+{
+	font-size: .9em;
+}
+
+/*
+====================================================================================================
+JQUERY OVERRIDES
+====================================================================================================
+*/
+
+.ui-menu-item {
+	font-size: 12px;
+	font-family: @font-family-base;
+}
+
+.ui-state-focus {
+	border: 1px solid @navbar-homepage-border !important;
+	color: #fff !important;
+	background: none !important;
+	background-color: @navbar-homepage-bg !important;		
+}
+
+
+#scroller {
+    position: absolute;
+
+    /* Prevent elements to be highlighted on tap */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    /* Put the scroller into the HW Compositing layer right from the start */
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
